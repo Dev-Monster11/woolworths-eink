@@ -1,0 +1,12 @@
+diff a/MASTER-SERVER/app/Http/Controllers/TagController.php b/MASTER-SERVER/app/Http/Controllers/TagController.php	(rejected hunks)
+@@ -256,6 +256,10 @@
+ 	            'unit_quantity'     	=> $request['product_weight'],
+ 	            'unit_of_measurement'   => $request['product_unit'],
+ 	            'product_price'   		=> "$".$request['product_price'],
++	            'breakdown_price'    	=> "$".$request['product_breakdown_price'],
++	            'breakdown_divisor'     => $request['product_breakdown_divisor'],
++	            'breakdown_quantity'  	=> $request['product_breakdown_weight'],
++	            'breakdown_unit'  		=> $request['product_breakdown_unit'],
+ 	            'barcode_data'  		=> $request['barcode_data'],
+ 	            'sub_barcode_id'  		=> $request['sub_barcode_id'],
+ 	            'qr_code_data'  		=> $request['qr_code_data'],	

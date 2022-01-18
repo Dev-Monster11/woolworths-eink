@@ -1,0 +1,7 @@
+.template_area, .template_area_realtime {
+    /*background-size: contain;*/
+    background: url("/images/template_nt.png") no-repeat center;
+    height: 170px;
+    width: 100%;
+    position: relative;
+}

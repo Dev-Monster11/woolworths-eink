@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Woolworths eInk - Tag Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="">
+    <meta name="X-CSRF-TOKEN" content="">
+    
+    <link rel="stylesheet" href="css/poppins.css"> <!-- Google Poppins Font -->
+
+    <!-- FontAwesome -->
+    <!-- NOTE: Add fonts from 'https://github.com/FortAwesome/Font-Awesome/tree/master/webfonts' -->
+    <link rel="stylesheet" href="css/fontawesome.css"> <!-- 5.15.3, uses 'fas' -->
+
+    <link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Infamous bootstrap stylesheet -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Main stylesheet -->
+
+    <link rel="icon" type="image/x-icon" href="images/barcode_icon.ico">
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                <i class="fa fa-bars"></i>
+                <span class="sr-only">Toggle Menu</span>
+            </button>
+        </div>
+        <div class="p-4">
+            <h1><img src="images/logo.png" alt="Home"><a class="logo"><span>Electronic Ink Control System</span></a>
+            </h1>
+
+            <!-- https://fontawesome.com/icons/ -->
+            <ul class="list-unstyled components mb-5">
+
+                <li><a class="esp_home"><span class="fa fa-list mr-3"></span>Overview</a></li>
+                <li class="active"><a class="esp_add"><span class="fas fa-tag mr-3"></span>Tags</a></li>
+                <li><a class="esp_schedule"><span class="far fa-calendar-plus mr-3"></span>Schedule</a></li>
+                <li><a class="esp_notice"><span class="fa fa-exclamation-triangle mr-3"></span>Notices</a></li>
+                <li><a class="esp_setting"><span class="fa fa-cog mr-3"></span>Settings</a></li>
+                <li><a class="esp_support"><span class="fa fa-question-circle mr-3"></span>Support</a></li>
+                <li><a class="esp_about"><span class="fa fa-user mr-3"></span>About</a></li>
+                <li>
+                    <a class="esp_logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span class="fas fa-sign-out-alt mr-3" style="color:rgba(255, 255, 255, 0.4);"></span>Logout
+                    </a>
+                </li>
+                <form id="logout-form" action="" method="POST" class="d-none">
+                    <input type="hidden" name="_csrf" value="" />
+                </form>
+            </ul>
+
+            <!--<div class="mb-5">-->
+            <h3 class="h6 mb-3"></h3>
+            <div class="footer"><p></p></div>
+            <!--<form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                    <div class="icon"><span class="icon-paper-plane"></span></div>
+                    <input type="text" class="form-control" placeholder="Enter Email Address">
+                </div>
+            </form>-->
+            <!--</div>-->
+            <br/>
+            <h3 class="h6 mb-3"></h3>
+            <div class="footer"><p></p></div>
+        </div>
+    </nav>
+    <div class="content container-fluid-nw" style="width: 100%">
+        <div id="select">
+            <h2>Add</h2>
+            <h6 class="mb-4">Select how you would like to enter the tag information</h6>
+            <hr/>
+            <div>
+                <p>There are two methods to add tag information.
+                    <br/><br/>
+                    The first option allows you to manually enter tag information. Use this option if you want to simply
+                    create a new tag with custom entered data.
+                    <br/>
+                    The second option gives you the ability to directly upload a Bitmap image. This is useful to show
+                    customers a full screen warning that a product is out of stock, etc.
+                </p>
+                <br/>
+            </div>
+
+            <div class="mt-3" style="width: 100%">
+                <div class="row justify-content-center d-flex">
+                    <div id="select_manual" class="methodSelected selectMethod d-flex flex-column align-items-center">
+                        <div class="w-100 my-2">
+                            <h5 class="text-center"><strong>Enter it Manually</strong></h5>
+                        </div>
+                        <div class="template_area">
+                            <div class="row justify-content-between p-2">
+                                <div style="width: 100%;">
+                                    <p class="screen_product_name">Quilton Pocket 4 Ply Hypo Allergenic Tissues - 6 Pack</p>
+                                    <div style="position: absolute;left: 202px;top: 6px;">
+                                        <img src="data/QR.bmp" alt="" width="50" height="50">
+                                    </div>
+
+                                    <div style="position: absolute;bottom:50px;">
+                                        <p class="screen_product_wqty">$3.33 / 100 Sheets</p>
+                                        <!--<p style="position: absolute;bottom:-35px; border: 1px solid black; text-transform: uppercase;text-align: center;">BARCODE</p>-->
+                                        <div style="position: absolute;bottom:-30px;">
+                                            <img src="data/barcode.bmp" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="position: absolute;bottom: 16%;right: 48px;"><h1
+                                            class="screen_product_price">2</h1></div>
+                                    <div style="position: absolute;bottom: 32%;right: 8px;"><h1
+                                            class="screen_product_price_sub">50</h1></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="select_auto" class="selectMethod d-flex flex-column align-items-center">
+                        <div class="w-100 my-2">
+                            <h5 class="text-center"><strong>Upload a Bitmap</strong></h5>
+                        </div>
+                        <div class="template_area_null">
+                            <div class="row p-2 justify-content-center mx-auto">
+                                <div class="col-12" style="padding-top: 5px;">
+                                    <div id="drop-area-method" class="drop-area">
+                                        <p class="text-muted" style="text-align: center">Drag and Drop</p>
+                                        <input type="file" id="fileElem-method" class="d-none" accept="image/*"
+                                               onchange="handleFiles(this.files, '-method')">
+                                        <div class="mt-2 mb-2 d-none" id="imageArea-method">
+                                            <img id="imageViewer-method" alt="" height="110" width="110">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12"
+                                     style="width: 100%;margin: auto;text-align: center; padding-top: 20px;">
+                                    <button type="button" class="ms-5 btn btn-outline-green" id="fileBrowseButton-method">Browse&nbsp;&nbsp;&nbsp;<i class="fas fa-file"></i></button>
+                                    <p id="image_error-method" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center my-4">
+                    <button id="select-next" class="btn btn-outline-green w-25">Next</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="manual" class="w-100 d-none">
+            <h2>Add</h2>
+            <h6 class="mb-4">Enter the information below</h6>
+            <hr/>
+            <p>
+                Once the information has been filled out below, click 'Save to Tag' to update the tag data.
+                <br/>
+                The tag will then refresh its screen and will be ready to be placed on the store shelf.
+            </p>
+            <div class="mt-3 ml-lg-3">
+                <div class="row manualArea">
+                    <div class="col-12 col-lg-7 p-0">
+                        <form id="manualForm"  method="POST">
+                            <input type="hidden" name="csrf-token" value="" />
+                            <input type="hidden" name="_token" value="" />
+                            <input type="hidden" name="ip_address" value="localhost:8000" />
+                            <input type="hidden" name="mac_address" value="100.321.321.321" />
+                            <input type="hidden" name="ms_ip" value="localhost:8000" />
+                            <div class="row align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <input type="text" name="product_name" placeholder=" * Product Name"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>EG: 'Vegemite' or 'Coco Pops'</p>
+                                </div>
+                                <p id="name_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <input type="text" name="product_weight" placeholder=" * Product Unit Quantity"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>The unit quantity of the product (EG: 100)</p>
+                                </div>
+                                <p id="gram_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <select name="product_unit" style="min-width: 152px; min-height: 45px;" class="w-100">
+                                        <option value="gramms">gramms</option>
+                                        <option value="kilos">kilos</option>
+                                        <option value="ml">ml</option>
+                                        <option value="litres">litres</option>
+                                        <option value="peices">peices</option>
+                                        <option value="sheets">sheets</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Unit of measurement</p>
+                                </div>
+                                <p id="unit_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <span class="dollar">$</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="number" name="product_price" placeholder="55"/>
+                                        </div>
+                                        <div class="col-1">
+                                            <span class="dot">.</span>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="number" name="product_price_decimal" placeholder="00"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Price of the individual item</p>
+                                </div>
+                                <p id="price_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <div class="row">
+                                        <div class="col-1">
+                                            <span class="dollar">$</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <input type="number" name="product_breakdown_price" placeholder="55"/>
+                                        </div>
+                                        <div class="col-1">
+                                            <span class="dot">.</span>
+                                        </div>
+                                        <div class="col-5">
+                                            <input type="number" name="product_breakdown_price_decimal" placeholder="00"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Breakdown down product price</p>
+                                </div>
+                                <p id="weight_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <select name="product_breakdown_divisor" style="min-width: 152px; min-height: 45px;" class="w-100">
+                                        <option value="per">per</option>
+                                        <option value="for">for</option>
+                                        <option value="of">of</option>
+                                        <option value="at">at</option>
+                                        <option value="/">/</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Breakdown down divisor</p>
+                                </div>
+                                <p id="divisor_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <input type="text" name="product_breakdown_weight" placeholder=" * Breakdown Unit Quantity"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Breakdown down unit quantity of the product (EG: 100)</p>
+                                </div>
+                                <p id="breakdown_weight_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <div class="row pt-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <select name="product_breakdown_unit" style="min-width: 152px; min-height: 45px;" class="w-100">
+                                        <option value="gramms">gramms</option>
+                                        <option value="kilos">kilos</option>
+                                        <option value="ml">ml</option>
+                                        <option value="litres">litres</option>
+                                        <option value="peices">peices</option>
+                                        <option value="sheets">sheets</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <p>Breakdown down unit of measurement</p>
+                                </div>
+                                <p id="breakdown_unit_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+
+                            <br/>
+                            Enabling this option will halve the price of the product and turn the screen yellow
+                            <div class="row pt-3 pl-3">
+                                <div class="col-12 align-items-center">
+                                    <input type="checkbox" name="half" id="half"
+                                           style="transform: scale(1.4); cursor: pointer; margin-left: 3px;">
+                                    <label class="pl-3 text-muted ms-1" for="half" style="cursor: pointer;"> Enable 1/2 (half) Price Mode</label>
+                                </div>
+                            </div>
+                            <br />
+                            Enabling this option will permit you to add a sale price
+                            <div class="row pt-3 pl-3">
+                                <div class="col-12 align-items-center">
+                                    <input type="checkbox" name="sale" id="sale"
+                                           style="transform: scale(1.4); cursor: pointer; margin-left: 2.5px;">
+                                    <label class="pl-3 text-muted ms-1" for="sale" style="cursor: pointer;"> Enable Sale Mode</label>
+                                </div>
+                            </div>
+
+                            <div class="row pt-3 pl-3 align-items-center">
+                                <div class="col-12 col-md-5">
+                                    <input type="text" disabled="disabled" name="product_sale_price" placeholder=" * Sale Price Value"/>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    The new value of the product
+                                </div>
+                                <p id="sale_price_error" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+                            <br/>
+                            <div class="row pt-3 pb-3 pl-3 align-items-center">
+                                <div class="col-10 w-100 d-flex align-items-center">
+                                    <div id="drop-area-manual" class="drop-area">
+                                        <p class="text-muted" style="text-align: center">Drag and Drop</p>
+                                        <input type="file" id="fileElem-manual" class="d-none" accept="image/*"
+                                               onchange="handleFiles(this.files, '-manual')">
+                                        <div class="mt-2 mb-2 d-none" id="imageArea-manual">
+                                            <img id="imageViewer-manual" alt="" height="110" width="110">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="ml-3 h-10 ms-5 btn btn-outline-green" id="fileBrowseButton-manual">Browse&nbsp;&nbsp;&nbsp;<i class="fas fa-file"></i></button>
+                                </div>
+                                <p id="image_error-manual" class="d-none p-1 mt-1 w-100 alert-danger"></p>
+                            </div>
+                            <br/>
+
+                            <div class="row pt-3 pl-3">
+                                <div class="col-12 w-100">
+                                    <button type="submit" class="btn btn-outline-green w-50" style="height: 50px; width: 60px;">Save to Tag</button>
+                                    <p id="form_error" class="d-none p-1 mt-1 w-50 alert-danger"></p>
+                                </div>
+                            </div>
+                        </form>
+                        <br />
+                        <br />
+                    </div>
+                    <div class="col-12 col-lg-5 d-flex align-items-center flex-column">
+                        <h4>Realtime Viewer</h4>
+                        <div class="template_area_realtime" id="card-viewer" style="width: 321px;">
+                            <div class="row justify-content-between p-2">
+                                <div style="width: 100%;">
+                                    <div class="screen_product_name">
+                                        <span id="view-name"></span>&nbsp;-&nbsp; 
+                                        <span id="view-product-weight"></span>&nbsp;
+                                        <span id="view-product-unit"></span>
+                                    </div>
+                                    <div style="position: absolute;left: 202px;top: 6px;width: 50px; height: 50px;">
+                                        QR Code
+                                    </div>
+
+                                    <div style="position: absolute;bottom:50px;">
+                                        <p class="screen_product_wqty">
+                                            <span class="view-price-per-grams"></span>
+                                            <span class="view-divisor">/</span>
+                                            <span class="view-weight"></span>
+                                            <span class="view-unit"></span>
+                                        </p>
+                                        <!--<p style="position: absolute;bottom:-35px; border: 1px solid black; text-transform: uppercase;text-align: center;">BARCODE</p>-->
+                                        <div style="position: absolute;bottom:-30px;">
+                                            Bar code
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="position: absolute;bottom: 16%;right: 48px;">
+                                        <h1 class="view-price-number screen_product_price"></h1>
+                                    </div>
+                                    <div style="position: absolute;bottom: 32%;right: 8px;">
+                                        <h2 class="view-price-decimal screen_product_price_sub"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="template_area_realtime" id="card-viewer" style="width: 315px;">
+                            <div class="row justify-content-between p-2">
+                                <div>
+                                    <div>
+                                        <span id="view-name" class="screen_product_name"></span>
+                                        <span id="view-product-weight" class="screen_product_name"></span>
+                                        <span id="view-product-unit" class="screen_product_name"></span>
+                                    </div>
+                                    <div style="position: absolute;bottom:12px;width: 42%;">
+                                        <p class="screen_product_wqty">
+                                            <span class="view-price-per-grams"></span>
+                                            <span class="view-divisor">/</span>
+                                            <span class="view-weight"></span>
+                                            <span class="view-unit"></span>
+                                        </p>
+                                        <p style="border: 1px solid black; text-transform: uppercase;text-align: center;">
+                                            barcode here
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="view-price-number-div" style="position: absolute;bottom: 19%;right: 38px;">
+                                        <h1 class="view-price-number screen_product_price"></h1>
+                                    </div>
+                                    <div style="position: absolute;bottom: 36%;right: 13px;">
+                                        <h2 class="view-price-decimal screen_product_price_sub"></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_white_bar"><p>&nbsp;</p></div>
+    <div class="footer_copyright">
+        <p style="padding-right: 0;">Copyright (&copy;) Woolworths Group Limited 2021. All Rights Reserved.</p>
+    </div>
+</div>
+
+<!-- do not move these to the header -->
+<!-- if you do the sidebar won't toggle -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript">
+    const methods = ['select_manual', 'select_auto'];
+    methods.forEach(method => {
+        const elem = $(`#${ method }`);
+
+        // default selection on page load
+        // TO ADD
+
+        // click event
+        elem.on("click", () => {
+            elem.addClass("methodSelected");
+            methods.forEach(method2 => {
+                if (method2 !== method) {
+                    $(`#${ method2 }`).removeClass("methodSelected")
+                }
+            })
+        })
+    });
+
+    $('#select-next').on('click', () => {
+        if ($('#select_manual').hasClass("methodSelected")) {
+            $('#select').addClass("d-none");
+            $('#manual').removeClass("d-none")
+        }
+    });
+
+    $('#sale').on('change keyup', function (){
+        $('input[name="product_sale_price"]').attr("disabled", !this.checked)
+    });
+
+    ["-manual", "-method"].forEach(target => {
+        let dropArea = $(`#drop-area${ target }`)
+        ;['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.on(eventName, preventDefaults)
+        })
+
+        ;['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.on(eventName, () => dropArea.addClass('highlight'))
+        })
+
+        ;['dragleave', 'drop'].forEach(eventName => {
+            dropArea.on(eventName, () => dropArea.removeClass('highlight'))
+        });
+
+        dropArea.on('drop', (e) => {
+            let dt = e.dataTransfer;
+            let files = dt.files;
+
+            handleFiles(files, target)
+        });
+
+        $(`#fileBrowseButton${ target }`).on('click', () => {
+            $(`#fileElem${ target }`).click()
+        })
+    });
+
+    function handleFiles(files, target)
+    {
+        const file = files[0];
+        if (!file) return;
+
+        const errorElem = $(`#image_error${ target }`);
+
+        if (!/bmp/.test(file.type))
+        {
+            errorElem.html("Image extension must be BMP");
+            errorElem.removeClass("d-none");
+
+            return false;
+        }
+
+        let fr = new FileReader();
+        fr.readAsDataURL(file);
+
+        fr.onloadend = (e) => {
+            switch (target)
+            {
+                case "-method":
+                    let image = new Image();
+                    image.src = e.target.result;
+
+                    image.onload = () => {
+                        let height = image.height;
+                        let width = image.width;
+                        const needWidth = 332;
+                        const needHeight = 100;
+
+                        if (width !== needWidth || height !== needHeight)
+                        {
+                            errorElem.html(`Image dimensions must be ${ needWidth }x${ needHeight } but you submitted ${ width }x${ height }`);
+                            errorElem.removeClass("d-none");
+
+                            return;
+                        }
+
+                        errorElem.addClass("d-none");
+                        errorElem.html("");
+                        showPicture(image.src, target);
+                    };
+                    break;
+
+                case "-manual":
+                    errorElem.addClass("d-none");
+                    errorElem.html("");
+                    showPicture(e.target.result, target);
+                    break;
+            }
+        }
+    }
+
+    // BMP and QR code uploading
+    function showPicture(imageSrc, target)
+    {
+        $(`#imageArea${ target }`).removeClass("d-none");
+        $(`#imageViewer${ target }`).attr("src", imageSrc);
+    }
+
+    const productName = $('input[name="product_name"]');
+    const productPrice = $('input[name="product_price"]');
+    const productPriceDecimal = $('input[name="product_price_decimal"]');
+    const productUnit = $('select[name="product_unit"]');
+    const productWeight = $('input[name="product_weight"]');
+    const product_sale_price = $('input[name="product_sale_price"]');
+    const breakdownPrice = $('input[name="product_breakdown_price"]');
+    const breakdownPriceDecimal = $('input[name="product_breakdown_price_decimal"]');
+    const breakdownWeight = $('input[name="product_breakdown_weight"]');
+    const breakdownDivisor = $('select[name="product_breakdown_divisor"]');
+    const breakdownUnit = $('select[name="product_breakdown_unit"]');
+    const halfInput = $('#half');
+    const saleInput = $('#sale');
+    const imageUploaded = $('#imageViewer-manual');
+
+    // create the variables
+    var token = "";
+    var tag_ip = "";
+    var ms_ip = "";
+
+    if(window.location.hash)
+    {
+        var url = window.location.hash;
+        tag_ip = window.location.host; // get the tag IP address from the current location address
+        console.log('url------------',url)
+        if(url.lastIndexOf('&tagvalue=')!=-1){
+            var value = url.substring(url.lastIndexOf('&tagvalue=')+10);
+            console.log(url.lastIndexOf('&tagvalue='));
+            var taginformation = value.replace(/%22/g,'"').replace(/%20/g,' ');
+            token = url.substring(url.indexOf('#')+1); // get the token from the TAG
+            ms_ip = url.substring(url.indexOf('&')+1,url.lastIndexOf('&tagvalue=')); // get the master server IP address from the TAG
+            console.log('ms_ip----------',ms_ip);
+            var n = token.indexOf('&');
+            token = token.substring(0, n);
+            console.log('token---------',token);
+            taginformation = JSON.parse(taginformation);
+            var product_price = taginformation.product_price.replace('$','').split('.');
+            console.log(taginformation);
+            var breakdown_price = taginformation.breakdown_price.replace('$','').split('.');
+            //Tag information set 
+            $('input[name="mac_address"]').val(taginformation.mac_address);
+            $('input[name="product_name"]').val(taginformation.product_name);
+            $('input[name="product_weight"]').val(taginformation.unit_quantity);
+            $('select[name="product_unit"]').val(taginformation.unit_of_measurement);
+            $('select[name="product_breakdown_divisor"]').val(taginformation.breakdown_divisor);
+            $('input[name="product_breakdown_weight"]').val(taginformation.breakdown_quantity);
+            $('select[name="product_breakdown_unit"]').val(taginformation.breakdown_unit);
+            if(taginformation.half_price_mode == 'true')
+                $('input[name="half"]').prop('checked', ture);
+            else
+                $('input[name="half"]').prop('checked', false);
+            if(taginformation.sale_mode == 'true'){
+                $('input[name="sale"]').prop('checked', true);
+                $('input[name="product_sale_price"]').attr("disabled", false);
+            }
+            else{
+                $('input[name="sale"]').prop('checked', false);
+                $('input[name="product_sale_price"]').attr("disabled", true);
+            }
+            $('input[name="product_sale_price"]').val(taginformation.product_sale_price);
+            $('input[name="product_price"]').val(product_price[0]);
+            $('input[name="product_price_decimal"]').val(product_price[1]);
+            $('input[name="product_breakdown_price"]').val(breakdown_price[0]);
+            $('input[name="product_breakdown_price_decimal"]').val(breakdown_price[1]);
+
+            //insert data to tag image
+            $('.template_area .screen_product_name').html(taginformation.product_name + ' - ' + taginformation.unit_quantity + '&nbsp;' + taginformation.unit_of_measurement);
+            $('.template_area .screen_product_wqty').html(taginformation.breakdown_price + ' / '+ taginformation.breakdown_quantity + '&nbsp;' + taginformation.breakdown_unit);
+            var price = taginformation.product_price.replace('$','');
+            $('.template_area .screen_product_price').html(price.substr(0,price.indexOf('.')));
+            $('.template_area .screen_product_price_sub').html(price.substr(price.indexOf('.')));
+
+        }
+        else{
+            token = url.substring(url.indexOf('#')+1); // get the token from the TAG
+            ms_ip = url.substring(url.indexOf('&')+1,url.lastIndexOf('&mac=')); // get the master server IP address from the TAG
+            var mac_address =  url.substring(url.lastIndexOf('&mac=')+5);
+            var n = token.indexOf('&');
+            token = token.substring(0, n);
+            $('input[name="mac_address"]').val(mac_address);
+        }
+        console.log(mac_address);
+        console.log(ms_ip);
+        console.log(token)
+    }
+
+
+    $('input[name="csrf-token"]').val(token);
+    $('input[name="_token"]').val(token);
+    $('input[name="ip_address"]').val(tag_ip);
+    $('input[name="ms_ip"]').val(ms_ip);
+
+    $('meta[name=csrf-token]').attr('content', token);
+    $('meta[name=_token]').attr('content', token);
+    $('meta[name=X-CSRF-TOKEN]').attr('content', token);
+
+    // sidebar
+    $('a.esp_home').attr('href', ms_ip+'/home');
+    $('a.esp_add').attr('href', ms_ip+'/tag');
+    $('a.esp_schedule').attr('href', ms_ip+'/schedule');
+    $('a.esp_notice').attr('href', ms_ip+'/notices');
+    $('a.esp_setting').attr('href', ms_ip+'/settings');
+    $('a.esp_support').attr('href', ms_ip+'/support');
+    $('a.esp_about').attr('href', ms_ip+'/about');
+    $('a.esp_logout').attr('href', ms_ip+'/logout');
+
+    $('#manualForm').attr('action', '/post');
+    $('#logout-form').attr('action', ms_ip+'/logout');
+
+    function registerViewEvents()
+    {
+        const events = 'change keyup paste click';
+
+        const viewProductName = $('#card-viewer #view-name');
+        const viewProductPriceNumber = $('#card-viewer .view-price-number');
+        const viewProductPriceNumberDiv = $('#card-viewer #view-price-number-div');
+        const viewProductPriceDecimal = $('#card-viewer .view-price-decimal');
+        const viewBreakdownUnit = $('#card-viewer .view-unit');
+        const viewBreakdownDivisor = $('#card-viewer .view-divisor');
+        const viewBreakdownWeight = $('#card-viewer .view-weight');
+        const viewBreakdownPrice = $('#card-viewer .view-price-per-grams');
+        const viewProductUnit = $('#card-viewer #view-product-unit');
+        const viewProductWeight = $('#card-viewer #view-product-weight');
+
+        function handleProductName(value)
+        {
+            viewProductName.html(value || ' ');
+            handleProductUnit(productUnit.val())
+        }
+
+        function handleProductPrice(price)
+        {
+            const display = price.replace(/(#|\$|\(|\)|\.|[a-z A-Z])/g, '').substr(0, 4);
+            productPrice.val(display);
+
+            viewProductPriceNumber.html(display);
+            viewProductPriceNumber.css("font-size", `${70 - (display.length * 10)}px`);
+
+            handleProductPriceDecimal(productPriceDecimal.val());
+
+            if (price.substr(-1) === ".")
+            {
+                productPriceDecimal.focus()
+            }
+        }
+
+        function handleProductPriceDecimal(price)
+        {
+            let display = price.replace(/(#|\$|\(|\)|\.|[a-z A-Z])/g, '').substr(0, 2);
+            productPriceDecimal.val(display);
+
+            if (productPrice.val() === "")
+            {
+                display = ""
+            }
+
+            viewProductPriceNumberDiv.css('right', `${ 18 + (20 * display.length) }px`);
+            viewProductPriceDecimal.html(display)
+        }
+
+        function handleProductWeight(value)
+        {
+            viewProductWeight.html(value || '');
+            handleProductUnit(productUnit.val())
+        }
+
+        function handleProductUnit(value)
+        {
+            if (productName.val() !== "" && productWeight.val() !== "")
+            {
+                viewProductUnit.html(value || ' ')
+            }
+            else
+            {
+                viewProductUnit.html(' ')
+            }
+        }
+
+        function handleBreakdownWeight(value)
+        {
+            viewBreakdownWeight.html(value || '');
+            handleBreakdownDivisor(breakdownDivisor.val());
+            handleBreakdownUnit(breakdownUnit.val())
+        }
+
+        function handleBreakdownUnit(value)
+        {
+            if (breakdownPrice.val() !== "" && breakdownWeight.val() !== "")
+            {
+                viewBreakdownUnit.html(value || ' ')
+            }
+            else
+            {
+                viewBreakdownUnit.html('')
+            }
+        }
+
+        function handleBreakdownDivisor(value)
+        {
+            if (breakdownPrice.val() !== "" && breakdownWeight.val() !== "")
+            {
+                viewBreakdownDivisor.html(value || ' ')
+            }
+            else
+            {
+                viewBreakdownDivisor.html('')
+            }
+        }
+
+        function handleBreakdownPrice(value)
+        {
+            const display = value.replace(/(#|\$|\(|\)|\.|[a-z A-Z])/g, '').substr(0, 4);
+
+            breakdownPrice.val(display);
+            viewBreakdownPrice.html("$" + display + (breakdownPriceDecimal.val() && display ? "." + breakdownPriceDecimal.val() : ""));
+
+            handleBreakdownDivisor(breakdownDivisor.val());
+            handleBreakdownUnit(breakdownUnit.val());
+            handleBreakdownPriceDecimal(breakdownPriceDecimal.val());
+
+            if (value.substr(-1) === ".")
+            {
+                breakdownPriceDecimal.focus()
+            }
+        }
+
+        function handleBreakdownPriceDecimal(value)
+        {
+            const fixed = value.replace(/(#|\$|\(|\)|\.|[a-z A-Z])/g, '').substr(0, 2);
+
+            breakdownPriceDecimal.val(fixed);
+
+            if (breakdownPrice.val() === "")
+            {
+                viewBreakdownPrice.html("");
+
+                return
+            }
+
+            viewBreakdownPrice.html("$" + breakdownPrice.val() + (breakdownPrice.val() && fixed ? "." + fixed : ""));
+            handleBreakdownDivisor(breakdownDivisor.val());
+            handleBreakdownUnit(breakdownUnit.val())
+        }
+
+        productName.on(events, e => handleProductName(e.target.value));
+        productPrice.on(events, e => handleProductPrice(e.target.value));
+        productPriceDecimal.on(events, e => handleProductPriceDecimal(e.target.value));
+        productWeight.on(events, e => handleProductWeight(e.target.value));
+        productUnit.on(events, e => handleProductUnit(e.target.value));
+        breakdownUnit.on(events, e => handleBreakdownUnit(e.target.value));
+        breakdownWeight.on(events, e => handleBreakdownWeight(e.target.value));
+        breakdownPrice.on(events, e => handleBreakdownPrice(e.target.value));
+        breakdownPriceDecimal.on(events, e => handleBreakdownPriceDecimal(e.target.value));
+        breakdownDivisor.on(events, e => handleBreakdownDivisor(e.target.value));
+
+        handleProductName(productName.val());
+        handleProductPrice(productPrice.val());
+        handleProductWeight(productWeight.val());
+        handleProductUnit(productUnit.val());
+        handleBreakdownPrice(breakdownPrice.val());
+        handleBreakdownWeight(breakdownWeight.val());
+        handleBreakdownDivisor(breakdownDivisor.val());
+        handleBreakdownUnit(breakdownUnit.val())
+    }
+
+    registerViewEvents()
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+		<script type="text/javascript">
+			function countDown(secs, elem)
+			{
+				var element = document.getElementById(elem);
+				//element.innerHTML = "<h2>Redirecting automatically in <b>" + secs + "</b> seconds</h2>";
+				if(secs < 1) document.data.submit();
+				else { secs--; setTimeout('countDown('+secs+', "'+elem+'")', 1000); }
+			}
+			
+			function validate() { return true; }
+		</script>
+		<div id="status"></div>
+		<script type="text/javascript">countDown(1, "status");</script>
+	</head>
+	<body>
+		<form name="data" id="ESP32RD" onsubmit="return validate()" method="post" action="/add/tag">
+			<input type="hidden" name="firstname" id="fname" value="Hello"/>
+			<input type="hidden" name="lastname" id="lname" value="World"/>
+			<!--<input type="submit" name="submitbutton" value="Continue Now ->"></input>-->
+		</form>
+	</body>
+</html>

@@ -1,0 +1,313 @@
+table {
+    table-layout: auto;
+    border-collapse: collapse;
+    width: 90%;
+    text-align: center;
+}
+tbody {
+    border: 1px solid #b6bec1;
+}
+table tr:nth-child(1) td {
+    border: 1px solid #ccc;
+}
+td{
+    width: 14%;
+    padding: 0px;
+}
+.btn{
+    color: #cacaca;
+}
+.btn:hover{
+    color: white;
+}
+/*******************************************
+
+page
+
+********************************************/
+.content{
+    width: 100%;
+}
+
+.part{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.workingarea{
+    width: 64%;
+    min-width: 360px;
+    margin-top: 5%;
+    border: 1px solid #dee2e6;
+    padding: 2%;
+}
+
+.modal{
+    margin-left: 135px;
+}
+.modal-backdrop{
+    width: 100%;
+    height: 100%;
+}
+/*******************************************
+
+color row part 
+
+********************************************/
+.color_schedule {
+    width: 90%;
+    margin: 0 auto;
+}
+.row.first, .row.second{
+    padding: 0px;
+    margin: 0px;
+}
+.colortext{
+    width: 50%;
+}
+.colortext{
+    display: flex;
+}
+.colortext_color{
+    width: 40px;
+}
+.colortext_text{
+    width:200px;
+}
+.color{
+    float: left;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+.task_center{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.button-group{
+    width:50%;
+    padding:0px;
+    margin:0px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+@media screen and (max-width: 1212px) {
+    .color{
+        width: 20px;
+        height: 20px;
+        border-radius: 7px;
+    }
+    .colortext,.button-group{
+        width: 100%;
+        justify-content: center;
+    }
+    .colortext_color{
+        width: 30px;
+    }
+    .button-group{
+        width: 100%;
+        display: flex;
+    }
+    .button-group>.btn{
+        float: none !important;
+    }
+}
+/*******************************************
+
+color table
+
+********************************************/
+.color_range{
+    height: 100px;
+    border-style: none;
+}
+.second{
+    display: none;
+}
+.sch{
+    cursor: pointer;
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+.arrowright,.arrowleft{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.arrow{
+    font-size:80px;
+    color:#125430;
+}
+.fa-caret-right::before{
+    float: right;
+}
+/*******************************************
+
+edit modal
+
+********************************************/
+.ordinary,.command{
+     display: flex;
+     flex-flow:column;
+     align-items: center;
+}
+.time{
+    width: 100%;
+     display:flex;
+}
+
+.time select{
+    margin-right: 5%;
+}
+
+#halfday{
+    margin-right: 0%;
+}
+
+.form-group{
+    padding: 0% 5% 0% 5%;
+}
+.form-group>div{
+    width: 48%;
+     display: flex;
+     flex-flow:column;
+     align-items: center;
+     margin: 1%;
+}
+.form_command{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+}
+#command{
+    width: 200%;
+}
+.close>span{
+    position: absolute;
+}
+/*******************************************
+
+delete modal
+
+********************************************/
+.swal-footer {
+    text-align: center;
+}
+.swal-modal {
+    margin-left: 270px;
+}
+@media screen and (max-width: 995px) {
+    .modal{
+        margin-left: auto;    
+    }
+    .swal-modal {
+        margin-left: auto;
+    }
+
+}
+/*******************************************
+
+show modal
+
+********************************************/
+.modal-header{
+    padding: 0px;
+    border: none;
+}
+#viewweekdaytitle{
+    width: 10%;
+}
+#viewweekdaydata{
+    width: 90%;
+    border: none;
+    text-align: left;
+    padding-left: 5%;
+    font-size: 1.1em;
+}
+.viewtable{
+    width: 100%;
+    margin: 0px;
+}
+.viewtable>table{
+    width: 100%;
+}
+.viewtable tbody{
+    border: none;
+}
+
+.modal-dialog{
+    min-width: 400px;
+}
+
+@media screen and (min-width: 450px) {
+    .modal-dialog{
+    width: calc((100% - 270px) / 2);
+    margin: 0 auto;
+  }
+
+}
+@media screen and (max-width: 580px) {
+    .modal-dialog{
+        margin-left: 20%;
+    }
+}
+@media screen and (max-width: 450px) {
+    .modal{
+        margin-left: auto;    
+    }
+    .modal-dialog{
+        margin-left: 5%;
+        width: 90%;
+        min-width: auto;
+    }
+}
+@media screen and (max-width: 975px) {
+    td{
+        font-size: 8px;
+    }
+    #viewweekdaydata{
+        font-size: 12px;
+    }
+    .form-group>div{
+        width: 80%;
+    }
+    #command{
+        width: 150%;
+    }
+    .btn{
+        height: 30px;
+    }
+}
+@media screen and (max-width: 620px) {
+    .col-1{
+        padding: 0px;
+    }
+    .form-group>div{
+        width: 100%;
+        margin-left: auto;
+    }
+}
+@media screen and (max-width: 1500px) {
+    .arrow{
+        font-size:40px;
+    }
+    .btn-outline-green{
+        height: 30px;
+    }
+    .btn{
+        font-size: 12px;
+        height: 30px;
+        padding: auto;
+    }
+}
+@media screen and (max-width: 992px) {
+    .footer_copyright {
+        margin-left: 0;
+        width: 100%;
+    }
+} 

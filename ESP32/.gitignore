@@ -1,0 +1,5 @@
+OLD/
+COPY_TO_ESP32.BAT
+
+# JetBrains IDE cache
+/.idea

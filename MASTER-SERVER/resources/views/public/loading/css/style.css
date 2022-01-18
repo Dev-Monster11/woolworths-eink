@@ -1,0 +1,303 @@
+:root {
+    --size: 75px;
+    --clr-bg: #272324;
+    --clr1: #bbbb88;
+    --clr2: #ccc68d;
+    --clr3: #eedd99;
+    --clr4: #eec290;
+    --clr5: #eeaa88;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+    .container {
+        grid-template-rows: repeat(2, auto);
+        grid-template-columns: repeat(3, auto);
+    }
+}
+
+.spinner:nth-child(1) {
+    --animation-duration: 1000ms;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.spinner:nth-child(1) .spinner-item {
+    width: calc(var(--size) / 12);
+    height: 100%;
+    background: #0e9b19;
+    animation: spinner1 var(--animation-duration) ease-in-out infinite;
+}
+
+@keyframes spinner1 {
+    50% {
+        transform: scaleY(0.25);
+    }
+}
+
+.spinner:nth-child(1) .spinner-item:nth-child(1) {
+    --clr-spinner: var(--clr1);
+    animation-delay: calc(var(--animation-duration) / 10 * -3);
+}
+
+.spinner:nth-child(1) .spinner-item:nth-child(2) {
+    --clr-spinner: var(--clr5);
+    animation-delay: calc(var(--animation-duration) / 10 * -1);
+}
+
+.spinner:nth-child(1) .spinner-item:nth-child(3) {
+    --clr-spinner: var(--clr3);
+    animation-delay: calc(var(--animation-duration) / 10 * -2);
+}
+
+.spinner:nth-child(1) .spinner-item:nth-child(4) {
+    --clr-spinner: var(--clr4);
+    animation-delay: calc(var(--animation-duration) / 10 * -1);
+}
+
+.spinner:nth-child(1) .spinner-item:nth-child(5) {
+    --clr-spinner: var(--clr2);
+    animation-delay: calc(var(--animation-duration) / 10 * -3);
+}
+
+.content .container {
+    position: absolute;
+    left: 48%;
+    top: 40vh;
+    transform: translateX(-50%);
+}
+
+.flex-table.table-bordered{
+    width: inherit !important;
+}
+
+.content.container-fluid-nw .row {
+    margin-right: 0;
+}
+
+/*tag table toolbar coustom*/
+.tag_add {
+    position: relative;
+    padding: 1px 20px;
+}
+
+.tag_page {
+    padding: 0 20px;
+}
+
+#DataTables_Table_0_wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.a_add_btn{
+    margin-left: 9%;
+    min-width: 102px;
+    min-height: 39px;
+    margin-right: 5px;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child {
+    position: absolute;
+    top: 115px;
+    left: 36%;
+    width: 53%;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child div:first-child{
+    margin: 0 auto;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child div:nth-child(2){
+    margin-left: auto;
+}
+
+/*.tag_add .dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child {
+    position: absolute;
+    top: 115px;
+    left: 12%;
+}*/
+
+.tag_add .dataTables_wrapper.dt-bootstrap4.no-footer > div.takeoff{
+    margin-right: 30px;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer > div:nth-child(2) {
+    margin-top: 20px;
+}
+
+/*.tag_add .dataTables_wrapper.dt-bootstrap4.no-footer > div:nth-child(2) {
+    margin-top: 80px;
+}
+*/
+.dataTables_wrapper.dt-bootstrap4.no-footer label {
+    display: flex;
+    align-items: center;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer div.dataTables_length select.custom-select {
+    min-width: 30%;
+    margin: 0 5px;
+    padding-right: 10px !important;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer div.dataTables_filter label input {
+    margin-left: 5px;
+}
+
+#select button.custom_search_btn {
+    height: 39px;
+    /*margin-left: 5px;*/
+}
+
+#select .page-item.active .page-link {
+    z-index: 2;
+    background-color: #125430;
+    border-color: #125430;
+}
+
+#tagList_wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer .col-sm-12 {
+    padding-right: 0;
+    padding-left: 0;
+    position: relative;
+}
+
+.dataTables_wrapper.dt-bootstrap4.no-footer tbody {
+    min-height: 150px;
+    height: 80px;
+}
+
+.dataTables_processing_before_loading {
+    /*position: absolute;*/
+    top:85%;
+    left:50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%,-10%);
+    border: none;
+    background: transparent;
+}
+
+.dataTables_processing_after_loading {
+    position: absolute;
+    top:0%;
+    left:50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%,-10%);
+    border: none;
+    background: transparent;
+}
+
+.dataTables_processing_after_loading .spinner{
+    margin: 15px auto;
+    height: 45px;
+    width: 100px;
+    background: #fafafa;
+}
+
+.dataTables_processing .spinner{
+    margin: 15px auto;
+    height: 45px;
+    width: 100px;
+    background: #fafafa;
+}
+
+/* detail modal close button */
+#detailModal button.btn-primary {
+    margin:  0 auto;
+}
+
+.swal-footer {
+    text-align: center !important;
+}
+
+/* detail modal */
+.tag_detail_info {
+    justify-content: center;
+}
+
+
+/* setting page */
+.setting_page {
+
+}
+
+div.setting_page div.row{
+    margin: 15px 30px !important;
+}
+
+.footer_copyright {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+}
+
+#footer-text {
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+    #select button.custom_search_btn {
+        display: none;
+    }
+
+    #tagList_wrapper > div:nth-child(2){
+        margin-top: 70px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .footer_copyright {
+        margin-left: 0;
+        width: 100%;
+    }
+} 
+
+@media screen and (max-width: 768px) {
+    .a_add_btn,
+    hr {
+        display: none;
+    }
+
+    .dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child > div:first-child {
+        display: none;
+    }
+
+    .dataTables_wrapper.dt-bootstrap4.no-footer > div:nth-child(2),
+    #tagList_wrapper > div:nth-child(2) {
+        margin-top: 90px;
+    }
+
+    .dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child {
+        top: 115px;
+        left: 35%;
+        width: 35%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .dataTables_wrapper.dt-bootstrap4.no-footer > div:first-child {
+        left: 25%;
+    }
+
+    .dataTables_wrapper.dt-bootstrap4.no-footer > div:nth-child(2),
+    #tagList_wrapper > div:nth-child(2) {
+        margin-top: 80px;
+    }
+}
+
